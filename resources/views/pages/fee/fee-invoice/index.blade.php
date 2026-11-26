@@ -1,10 +1,10 @@
 @extends('layouts.app', ['breadcrumbs' => [
     ['href' => route('dashboard'), 'text' => 'Dashboard'],
-    ['text' => 'Finance', 'active'],
+    ['text' => 'Fees and receipts', 'active'],
 ]])
 
-@section('title', 'Finance')
-@section('page_heading', 'Finance')
+@section('title', 'Fees and receipts')
+@section('page_heading', 'Fees and receipts')
 
 @section('page_actions')
     @php
@@ -19,7 +19,7 @@
         ])->where('can', true);
     @endphp
     <div class="flex items-center gap-2">
-        <x-resource-create-action :href="route('fee-invoices.create')" ability="create" :arguments="[\App\Models\FeeInvoice::class]">Add invoice</x-resource-create-action>
+        <x-resource-create-action :href="route('fee-invoices.create')" ability="create" :arguments="[\App\Models\FeeInvoice::class]">Create fee invoice</x-resource-create-action>
         @if ($financeLinks->isNotEmpty())
             <april:dropdown-menu>
                 <slot:trigger>
@@ -48,7 +48,7 @@
 
             <dl class="grid grid-cols-2 gap-x-6 gap-y-4 border-y py-4 sm:grid-cols-4">
                 <div class="col-span-2 sm:col-span-1">
-                    <dt class="text-sm text-muted-foreground">Owed</dt>
+                    <dt class="text-sm text-muted-foreground">Pending fees</dt>
                     <dd class="text-2xl font-semibold tabular-nums tracking-tight" id="finance-owed">{{ money_text($summary['outstanding']) }}</dd>
                 </div>
                 <div>
@@ -56,7 +56,7 @@
                     <dd @class(['text-2xl font-semibold tabular-nums tracking-tight', 'text-destructive' => $summary['overdue'] > 0, 'text-muted-foreground' => $summary['overdue'] === 0])>{{ $summary['overdue'] }}</dd>
                 </div>
                 <div class="col-span-2 sm:col-span-1">
-                    <dt class="text-sm text-muted-foreground">Received</dt>
+                    <dt class="text-sm text-muted-foreground">Fees received</dt>
                     <dd class="text-2xl font-semibold tabular-nums tracking-tight">{{ money_text($summary['received']) }}</dd>
                 </div>
                 <div class="col-span-2 sm:col-span-1">
