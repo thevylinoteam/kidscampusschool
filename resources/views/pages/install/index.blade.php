@@ -1,6 +1,6 @@
 @extends('layouts.guest')
 
-@section('title', 'Install Skuul')
+@section('title', 'Install '.config('app.name'))
 
 @section('body')
     <div class="min-h-screen bg-muted/30 px-4 py-10 sm:px-6">
@@ -8,7 +8,7 @@
             <div class="mb-8 text-center">
                 <img src="{{ asset(config('app.logo')) }}" alt="{{ config('app.name') }} logo" class="mx-auto mb-4 h-16 w-16 rounded-2xl border bg-background object-cover shadow-lg">
                 <p class="text-sm font-semibold uppercase text-muted-foreground">{{ config('app.name') }}</p>
-                <h1 class="mt-3 text-3xl font-semibold tracking-tight">Install Skuul</h1>
+                <h1 class="mt-3 text-3xl font-semibold tracking-tight">Install {{ config('app.name') }}</h1>
                 <p class="mx-auto mt-2 max-w-xl text-muted-foreground">Create the first System Administrator account, organization, and campus.</p>
             </div>
 
@@ -201,21 +201,21 @@
                                 <div class="grid gap-4 sm:grid-cols-2">
                                     <div>
                                         <label for="organization_name" class="mb-2 block text-sm font-medium">Organization name</label>
-                                        <input id="organization_name" name="organization_name" value="{{ old('organization_name') }}" required class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm" {{ field_error_bindings('organization_name') }}>
+                                        <input id="organization_name" name="organization_name" value="{{ old('organization_name', 'Kids Campus School') }}" required class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm" {{ field_error_bindings('organization_name') }}>
                                         <x-field-error name="organization_name" class="mt-1" />
                                     </div>
                                     <div>
                                         <label for="campus_name" class="mb-2 block text-sm font-medium">First campus name</label>
-                                        <input id="campus_name" name="campus_name" value="{{ old('campus_name') }}" required class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm" {{ field_error_bindings('campus_name') }}>
+                                        <input id="campus_name" name="campus_name" value="{{ old('campus_name', 'Kids Campus - Main Branch') }}" required class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm" {{ field_error_bindings('campus_name') }}>
                                         <x-field-error name="campus_name" class="mt-1" />
                                     </div>
                                     <div>
                                         <label for="campus_initials" class="mb-2 block text-sm font-medium">Campus initials <span class="font-normal text-muted-foreground">(optional)</span></label>
-                                        <input id="campus_initials" name="campus_initials" value="{{ old('campus_initials') }}" maxlength="10" class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm">
+                                        <input id="campus_initials" name="campus_initials" value="{{ old('campus_initials', 'KCM') }}" maxlength="10" class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm">
                                     </div>
                                     <div>
                                         <label for="campus_email" class="mb-2 block text-sm font-medium">Campus email <span class="font-normal text-muted-foreground">(optional)</span></label>
-                                        <input id="campus_email" type="email" name="campus_email" value="{{ old('campus_email') }}" class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm">
+                                        <input id="campus_email" type="email" name="campus_email" value="{{ old('campus_email', 'info@kidscampusbhopal.com') }}" class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm">
                                     </div>
                                     <div class="sm:col-span-2">
                                         <x-school-address-fields prefix="campus" :countries="$countries" />
@@ -252,7 +252,7 @@
                             </section>
 
                             <button type="submit" class="w-full rounded-md bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90">
-                                Install Skuul
+                                Install {{ config('app.name') }}
                             </button>
                         </form>
                     @else
