@@ -38,7 +38,7 @@ $menuGroups[] = $currentGroup;
             <div class="flex min-w-0 flex-col gap-2 px-2 group-data-[collapsible=icon]:px-0">
                 <a href="{{route('home')}}" wire:navigate class="flex h-10 items-center gap-2" aria-label="Home">
                     <img src="{{asset(current_school()?->logoURL ?? config('app.logo'))}}" alt=""
-                        class="h-8 w-8 rounded-md border object-cover">
+                        class="h-9 w-12 shrink-0 object-contain">
                     <span class="truncate text-sm font-semibold">{{config('app.name')}}</span>
                 </a>
 
@@ -47,7 +47,7 @@ $menuGroups[] = $currentGroup;
                         {{-- April repeats the header for desktop and mobile. Wrap the control to avoid duplicate label IDs. --}}
                         <label class="flex min-w-0 flex-col gap-1">
                             <span class="px-2 text-xs font-medium text-sidebar-foreground/70">
-                                Working school
+                                School branch
                             </span>
                             <april:native-select class="h-11"
                                 aria-label="Working school" wire:change="switchSchool($event.target.value)" wire:loading.attr="disabled" wire:target="switchSchool">

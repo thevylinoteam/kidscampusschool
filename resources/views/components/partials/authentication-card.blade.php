@@ -5,7 +5,7 @@
 
     <main class="relative w-full max-w-md {{ $class }} {{ $width }} {{ $height }}">
         <div class="mb-8 flex flex-col items-center gap-3 text-center">
-            <img src="{{ asset(config('app.logo')) }}" alt="{{ config('app.name') }} logo" class="h-16 w-16 rounded-2xl border bg-background object-cover shadow-lg">
+            <img src="{{ asset(config('app.logo')) }}" alt="{{ config('app.name') }} logo" class="h-24 w-40 object-contain">
             <p class="text-sm font-semibold uppercase text-muted-foreground">{{ config('app.name') }}</p>
         </div>
 

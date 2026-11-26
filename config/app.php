@@ -1,20 +1,20 @@
 <?php
 
 return [
-    'name' => env('APP_NAME', 'Laravel'),
-    'logo' => env('LOGO_PATH') ?: 'img/logo/logo.png',
-    'favicon' => env('FAVICON_PATH') ?: 'img/logo/logo.png',
-    'currency' => env('APP_CURRENCY', 'NGN'),
+    'name' => env('APP_NAME', 'Kids Campus School'),
+    'logo' => env('LOGO_PATH') ?: 'img/logo/kids-campus.webp',
+    'favicon' => env('FAVICON_PATH') ?: 'img/logo/kids-campus.webp',
+    'currency' => env('APP_CURRENCY', 'INR'),
 
     'env' => env('APP_ENV', 'production'),
     'debug' => (bool) env('APP_DEBUG', false),
     'url' => env('APP_URL', 'http://localhost'),
     'asset_url' => env('ASSET_URL'),
 
-    'timezone' => 'UTC',
+    'timezone' => env('APP_TIMEZONE', 'Asia/Kolkata'),
     'locale' => env('APP_LOCALE', 'en'),
     'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
-    'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
+    'faker_locale' => env('APP_FAKER_LOCALE', 'en_IN'),
 
     'supported_locales' => [
         'ar' => 'العربية',

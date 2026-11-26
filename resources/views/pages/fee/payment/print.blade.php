@@ -4,6 +4,10 @@
 
 @section('content')
     <main class="mx-auto max-w-2xl space-y-6 p-8">
+        <div class="flex items-start gap-4 border-b pb-5">
+            <img src="{{ asset(current_school()->logoURL) }}" alt="{{ config('app.name') }} logo" class="h-16 w-24 object-contain">
+            <div><p class="text-lg font-semibold">{{ current_school()->name }}</p><p class="text-sm text-gray-600">{{ current_school()->address }} · {{ current_school()->city }} {{ current_school()->postal_code }}</p><p class="text-sm text-gray-600">{{ current_school()->phone }} · {{ current_school()->email }}</p></div>
+        </div>
         <div class="border-b pb-5"><p class="text-sm text-gray-500">Payment receipt</p><h1 class="text-2xl font-semibold">Receipt #{{ $studentPayment->id }}</h1><p class="text-sm text-gray-500">{{ $studentPayment->received_on?->format('j M Y') }}</p></div>
         <div class="grid gap-4 sm:grid-cols-2"><div><p class="text-sm text-gray-500">Student</p><p class="font-medium">{{ $studentPayment->studentRecord?->user?->name }}</p></div><div><p class="text-sm text-gray-500">Payment method</p><p class="font-medium">{{ $studentPayment->methodLabel() }}</p></div><div><p class="text-sm text-gray-500">Financial period</p><p class="font-medium">{{ $studentPayment->financialPeriod?->name ?: 'Legacy record' }}</p></div><div><p class="text-sm text-gray-500">Reference</p><p class="font-medium">{{ $studentPayment->reference ?: '—' }}</p></div></div>
         <div class="flex items-center justify-between border-y py-5"><span class="text-lg font-medium">Amount received</span><span class="text-2xl font-semibold">{{ $studentPayment->amount->formatToLocale(app()->getLocale()) }}</span></div>

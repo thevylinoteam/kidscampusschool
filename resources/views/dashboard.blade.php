@@ -8,6 +8,8 @@
 
 @section('content')
 
+@include('partials.kids-campus-quick-actions')
+
 @livewire('dashboard-data-cards')
 
 

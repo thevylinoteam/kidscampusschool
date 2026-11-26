@@ -21,6 +21,19 @@ class DashboardTest extends TestCase
     use FeatureTestTrait;
     use RefreshDatabase;
 
+    public function test_daily_work_shortcuts_respect_permissions(): void
+    {
+        $this->authorized_user(['read student']);
+
+        $this->get(route('dashboard'))
+            ->assertOk()
+            ->assertSee('data-quick-action="students.index"', false)
+            ->assertDontSee('data-quick-action="students.create"', false)
+            ->assertDontSee('data-quick-action="fee-invoices.index"', false)
+            ->assertDontSee('data-quick-action="fee-invoices.create"', false)
+            ->assertDontSee('data-quick-action="reports.index"', false);
+    }
+
     public function test_the_dashboard_lists_only_notices_running_today(): void
     {
         $this->authorized_user(['read notice']);
